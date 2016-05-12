@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>CrimeMiner</title>
+	<link rel="shortcut icon" href="img/icon.png" />
+	
+	<!-- START SIGMA IMPORTS -->
+	<script src="librerie/linkurious.js-develop/src/sigma.core.js"></script>
+	<script src="librerie/linkurious.js-develop/src/conrad.js"></script>
+	<script src="librerie/linkurious.js-develop/src/utils/sigma.utils.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/utils/sigma.polyfills.js"></script>
+	<script src="librerie/linkurious.js-develop/src/sigma.settings.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/classes/sigma.classes.dispatcher.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/classes/sigma.classes.configurable.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/classes/sigma.classes.graph.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/classes/sigma.classes.camera.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/classes/sigma.classes.quad.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/captors/sigma.captors.mouse.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/captors/sigma.captors.touch.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/renderers/sigma.renderers.canvas.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/renderers/sigma.renderers.webgl.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/renderers/sigma.renderers.svg.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/renderers/sigma.renderers.def.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/renderers/webgl/sigma.webgl.nodes.def.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/renderers/webgl/sigma.webgl.nodes.fast.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/renderers/webgl/sigma.webgl.edges.def.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/renderers/webgl/sigma.webgl.edges.fast.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/renderers/webgl/sigma.webgl.edges.arrow.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/renderers/canvas/sigma.canvas.labels.def.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/renderers/canvas/sigma.canvas.hovers.def.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/renderers/canvas/sigma.canvas.nodes.def.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/renderers/canvas/sigma.canvas.edges.def.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/renderers/canvas/sigma.canvas.edges.curve.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/renderers/canvas/sigma.canvas.edges.arrow.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/renderers/canvas/sigma.canvas.edges.curvedArrow.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/renderers/canvas/sigma.canvas.edgehovers.def.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/renderers/canvas/sigma.canvas.edgehovers.curve.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/renderers/canvas/sigma.canvas.edgehovers.arrow.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/renderers/canvas/sigma.canvas.edgehovers.curvedArrow.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/renderers/canvas/sigma.canvas.extremities.def.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/renderers/svg/sigma.svg.utils.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/renderers/svg/sigma.svg.nodes.def.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/renderers/svg/sigma.svg.edges.def.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/renderers/svg/sigma.svg.edges.curve.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/renderers/svg/sigma.svg.labels.def.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/renderers/svg/sigma.svg.hovers.def.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/middlewares/sigma.middlewares.rescale.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/middlewares/sigma.middlewares.copy.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/misc/sigma.misc.animation.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/misc/sigma.misc.bindEvents.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/misc/sigma.misc.bindDOMEvents.js"></script>
+	<script	src="librerie/linkurious.js-develop/src/misc/sigma.misc.drawHovers.js"></script>
+	<!-- END SIGMA IMPORTS -->
+	<!-- Alcune funzioni sono alla fine del file per trovare gli id dei tag -->
+	<!-- FILTRI -->
+	<script type="text/javascript" src="librerie/linkurious.js-develop/plugins/sigma.plugins.filter/sigma.plugins.filter.js"></script>
+	<script type="text/javascript" src="librerie/linkurious.js-develop/plugins/sigma.parsers.json/sigma.parsers.json.js"></script>
+	<!-- FUNZIONI -->
+	<script	src="librerie/jquery/jquery-1.11.3.js"></script>
+	<script type="text/javascript" src="js/Utility.js"></script>
+	<script src="js/Effetti.js" type="text/javascript"></script>
+	<script src="js/CreaTabella.js" type="text/javascript"></script>
+	<script src="js/Data.js" type="text/javascript"></script>
+	<script src="js/SalvaGrafo.js" type="text/javascript"></script>
+	<script src="js/SalvaTabella.js" type="text/javascript"></script>
+	<script src="js/GraphFunctions.js" type="text/javascript"></script>
+	<!-- LAYOUT -->
+	<script	src="librerie/linkurious.js-develop/plugins/sigma.plugins.animate/sigma.plugins.animate.js"></script>
+	<script	src="librerie/linkurious.js-develop/plugins/sigma.layouts.forceAtlas2/supervisor.js"></script>
+	<script	src="librerie/linkurious.js-develop/plugins/sigma.layouts.forceAtlas2/worker.js"></script>
+	<script	src="librerie/linkurious.js-develop/plugins/sigma.layouts.forceAtlas2/tasks/forceAtlas2.js"></script>
+	<script	src="librerie/linkurious.js-develop/plugins/sigma.layouts.fruchtermanReingold/sigma.layout.fruchtermanReingold.js"></script>
+	<!-- SNAPSHOT -->
+	<script	src="librerie/linkurious.js-develop/plugins/sigma.renderers.snapshot/sigma.renderers.snapshot.js"></script>
+	<!-- SELECT -->
+	<script type="text/javascript" src="librerie/linkurious.js-develop/plugins/sigma.helpers.graph/sigma.helpers.graph.js"></script>
+	<script type="text/javascript" src="librerie/linkurious.js-develop/plugins/sigma.plugins.activeState/sigma.plugins.activeState.js"></script>
+	<script type="text/javascript" src="librerie/linkurious.js-develop/plugins/sigma.plugins.select/sigma.plugins.select.js"></script>
+	<script type="text/javascript" src="librerie/linkurious.js-develop/plugins/sigma.renderers.linkurious/settings.js"></script>
+	<script type="text/javascript" src="librerie/linkurious.js-develop/plugins/sigma.renderers.linkurious/canvas/sigma.canvas.labels.def.js"></script>
+	<script type="text/javascript" src="librerie/linkurious.js-develop/plugins/sigma.renderers.linkurious/canvas/sigma.canvas.hovers.def.js"></script>
+	<script type="text/javascript" src="librerie/linkurious.js-develop/plugins/sigma.renderers.linkurious/canvas/sigma.canvas.nodes.def.js"></script>
+	<script type="text/javascript" src="librerie/linkurious.js-develop/plugins/sigma.renderers.linkurious/canvas/sigma.canvas.edges.def.js"></script>
+	<script type="text/javascript" src="librerie/linkurious.js-develop/plugins/sigma.renderers.linkurious/canvas/sigma.canvas.edges.curve.js"></script>
+	<script type="text/javascript" src="librerie/linkurious.js-develop/plugins/sigma.renderers.linkurious/canvas/sigma.canvas.edges.arrow.js"></script>
+	<script type="text/javascript" src="librerie/linkurious.js-develop/plugins/sigma.renderers.linkurious/canvas/sigma.canvas.edges.curvedArrow.js"></script>
+	<!-- NEIGHBORHOODS
+	<script	src="librerie/linkurious.js-develop/plugins/sigma.plugins.neighborhoods/sigma.plugins.neighborhoods.js"></script>
+	-->
+	<!-- DESIGN -->
+	<script type="text/javascript" src="librerie/linkurious.js-develop/plugins/sigma.plugins.colorbrewer/sigma.plugins.colorbrewer.js"></script>
+	<script type="text/javascript" src="librerie/linkurious.js-develop/plugins/sigma.plugins.design/sigma.plugins.design.js"></script>
+	<script type="text/javascript" src="librerie/linkurious.js-develop/plugins/sigma.plugins.legend/settings.js"></script>
+	<script type="text/javascript" src="librerie/linkurious.js-develop/plugins/sigma.plugins.legend/sigma.plugins.legend.js"></script>
+	<!-- TOOLTIPS -->
+	<script type="text/javascript" src="librerie/linkurious.js-develop/plugins/sigma.plugins.tooltips/sigma.plugins.tooltips.js"></script>
+	<script type="text/javascript" src="js/Tooltips.js"></script>
+	<script type="text/javascript" src="librerie/mustache.min.js"></script>
+	<!-- GRAFICI -->
+	<script type="text/javascript" src="librerie/graph/HighCharts/js/highcharts.js"></script>
+	<script type="text/javascript" src="librerie/graph/HighCharts/js/modules/exporting.js"></script>
+	<!-- SELECT-AND-DRAG -->
+	<script type="text/javascript" src="librerie/linkurious.js-develop/plugins/sigma.renderers.halo/settings.js"></script>
+	<script type="text/javascript" src="librerie/linkurious.js-develop/plugins/sigma.renderers.halo/sigma.renderers.halo.js"></script>
+	<script type="text/javascript" src="librerie/linkurious.js-develop/plugins/sigma.plugins.dragNodes/sigma.plugins.dragNodes.js"></script>
+	<script type="text/javascript" src="librerie/linkurious.js-develop/plugins/sigma.plugins.keyboard/sigma.plugins.keyboard.js"></script>
+	<script type="text/javascript" src="librerie/linkurious.js-develop/plugins/sigma.plugins.lasso/sigma.plugins.lasso.js"></script>
+	<script type="text/javascript" src="librerie/linkurious.js-develop/plugins/sigma.renderers.linkurious/settings.js"></script>
+	
+	<!-- STILI -->
+	<link href="css/style.css" rel="stylesheet" type="text/css"></link>
+</head>
+<body>
+	<div id="container">
+		<div id="graph-container"></div>
+		
+		
+		<div id="main">
+			<ul id="navigationMenu">
+		    	<li>
+				    <a class="home linkMenu cliccabile" onclick="nascondiMenu('layoutPane')">
+			            <span>graph layout</span>			            
+			        </a>
+			    </li>
+			    <li>
+			    	<a class="about linkMenu cliccabile" onclick="nascondiMenu('filtersPane')">
+			            <span>filters</span>
+			        </a>
+			    </li>
+			    <li>
+				     <a class="services linkMenu cliccabile" onclick="nascondiMenu('communityPane')">
+			            <span>analisys</span>
+			         </a>
+			    </li>
+			    <li>
+			    	<a class="portfolio linkMenu cliccabile" onclick="nascondiMenu('tablePane')">
+			            <span>data</span>
+			        </a>
+			    </li>
+			    <li>
+			    	<a class="contact linkMenu cliccabile" onclick="nascondiMenu('toolsPane')">
+			            <span>tools</span>
+			        </a>
+			    </li>
+			</ul>
+		</div>
+		
+		<!-- ********************************* -->
+		
+		<div id="pannelloSinistro2" class="pannelloSinistro2">
+			<!-- pannello layout -->
+			<div id="layoutPane" class="contentPannelloSinistro">
+				<h2 id="hideLayoutPane" class="underline cliccabile" onclick="nascondiMenu('layoutPane')">graph layout</h2>
+				<div id="contentLayoutPane" class="pannelloSinContentPane">
+					<div>
+						<a id="atlasLayout" class="cliccabile"><span>Force Atlas</span></a>
+						<span class="line"></span>
+						<a id="frLayout" class="cliccabile"><span>Fruchterman-Reingold</span></a>
+					</div>
+				</div>
+			</div>
+			<!-- fine pannello layout -->
+			
+			<!-- pannello filtri -->
+			<div id="filtersPane" class="contentPannelloSinistro">
+				<h2 id="hideControlPane" class="underline cliccabile" onclick="nascondiMenu('filtersPane')">filters</h2>
+				<!-- degree -->
+				<div id="contentControlPane" class="pannelloSinContentPane">
+					<div>
+						<h3>min degree <span id="min-degree-val">0</span></h3>
+						0 <input id="min-degree" type="range" min="0" max="0" value="0"> 
+						<span id="max-degree-value">0</span>
+						<br>
+					</div>
+					<!-- fine degree -->
+					<span class="line"></span>
+					<!-- filtri -->
+					<div>
+						<h3>select nodes</h3>
+						<div id="selezioneDiv">
+							<select id="selezioneAttributi" onChange="selectSelection(this.id, 'scegliAttributi')">
+								<option selected="selected" >attributes</option>
+							</select>
+							<span>-></span>
+							<select id="scegliAttributi" onchange="evidenziaSelection()">
+							</select>
+						</div>
+					</div>
+					<!-- fine filtri -->
+					<span class="line"></span>
+					<!-- tasti -->
+					<div>
+						<a id="reset-button" class="cliccabile"><span>Reset Filters</span></a>
+					</div>
+					<!-- fine tasti -->
+				</div>
+			</div>
+			<!-- fine pannello filtri -->
+			
+			<!-- pannello community -->
+			<div id="communityPane" class="contentPannelloSinistro">
+				<h2 id="hideCommunityPane" class="underline cliccabile" onclick="nascondiMenu('communityPane')">analisys</h2>
+				<div id="contentCommunityPane" class="pannelloSinContentPane">
+					<div>
+						<a id="totDegree" class="cliccabile" onclick="colorGraph('totdegree')">
+							<span>Total Degree</span>
+						</a>
+						<a id="inDegree"  class="cliccabile" onclick="colorGraph('indegree')">
+							<span>In Degree</span>
+						</a>
+						<a id="outDegree" class="cliccabile" onclick="colorGraph('outdegree')">
+							<span>Out Degree</span>
+						</a>
+					</div>
+					<span class="line"></span>
+					<div>
+						<a id="eccentricity" class="cliccabile" onclick="colorGraph('eccentricity')">
+							<span>Eccentricity</span>
+						</a>
+						<a id="betweenness" class="cliccabile" onclick="colorGraph('betweenness')">
+							<span>Betweenness</span>
+						</a>
+						<a id="closeness" class="cliccabile" onclick="colorGraph('closeness')">
+							<span>Closeness</span>
+						</a>
+					</div>
+					<span class="line"></span>
+					<div>
+						<a id="resetCommunity" class="cliccabile" onclick="resetColor()">
+							<span>Reset</span>
+						</a>
+					</div>
+				</div>
+			</div>
+			<!-- fine pannello community -->
+			
+			<!-- pannello table -->
+			<div id="tablePane" class="contentPannelloSinistro">
+				<h2 id="hideTablePane" class="underline cliccabile" onclick="nascondiMenu('tablePane')">data</h2>
+				<div id="contentTablePane" class="pannelloSinContentPane">
+					<div>
+						<a class="cliccabile" onclick="apriTabellaNodi()">
+							<span>Nodes Table</span>
+						</a>
+						<a class="cliccabile" onclick="apriTabellaArchi()">
+							<span>Edges Table</span>
+						</a>
+					</div>
+				</div>
+			</div>
+			<!-- fine pannello table -->
+			
+			<!-- pannello tools -->
+			<div id="toolsPane" class="contentPannelloSinistro">
+				<h2 id="hideToolsPane" class="underline cliccabile" onclick="nascondiMenu('toolsPane')">tools</h2>
+				<div id="contentToolsPane" class="pannelloSinContentPane">
+					<div>
+						<a class="cliccabile" onclick="salvaGrafo()">
+							<span>Save Graph Image</span>
+						</a>
+						<h3>
+							Enable lasso: <kbd>space</kbd> + <kbd>s</kbd>
+						</h3>
+					</div>
+				</div>
+			</div>
+			<!-- fine pannello tools -->
+		</div>
+		<!-- fine pannelloSinistro2 -->
+		
+		<!-- pannello info -->
+		<div id="infoPane">
+			<h2 id="hideInfoPane" class="underline cliccabile" onclick="nascondiElemento('contentInfoPane')">node details</h2>
+			<div id="contentInfoPane" class="contentPane" style="margin-bottom: 0px">
+				<table id="attribute-table" style="width:100px"></table>
+			</div>
+		</div>
+		<!-- fine pannello info -->
+		
+		<!-- pannello grafico -->
+		<div id="outer" class="outer">
+			<div id="graph" class="middle">
+				<!-- <button id="chiudiGrafo" onclick="chiudiGrafico()">close</button> -->
+				<div id="contentGraph" class="inner">
+					<div id="containerGraph"></div>
+				</div>
+			</div>
+		</div>
+		<!-- fine pannello grafico -->
+	</div>
+	<header>
+			<img id="logoimg" src="img/logo-crimeminer-trsp.png"/>
+	</header>
+	
+	<script type="text/javascript" src="js/Crime.js"></script>
+	<script type="text/javascript" src="js/Selezione.js"></script>
+	<script type="text/javascript" src="js/Layout.js"></script>
+	<script type="text/javascript" src="js/Filtri2.js"></script>
+	<script type="text/javascript" src="js/Design.js"></script>
+	<script type="text/javascript" src="js/Lasso.js"></script>
+	<script type="text/javascript" src="js/Graph.js"></script>
+</body>
+</html>

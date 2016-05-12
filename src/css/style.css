@@ -1,0 +1,573 @@
+@CHARSET "ISO-8859-1";
+
+th{
+	width: 20%; 
+	border-bottom: 1px solid #aac789;
+    background: transparent;
+	padding: 8px 0 0 0;
+	vertical-align:text-top;
+}
+              
+td{
+	width: 80%;
+    margin: 0;
+    padding: 8px 0 0 0;
+    border-bottom: 1px solid #aac789;
+    background: transparent;
+	vertical-align:text-top;
+}
+
+header {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  height: 40px;
+  position: fixed;
+  //width: 100%;
+  background-color: gainsboro;
+  right: 10px;
+  left: 10px;
+  top: 2px;
+  text-align: center;
+}
+
+#logoimg {
+	height: 100%;
+   // margin-left: 28px;
+}
+
+#attribute-table{
+	width: 100&;
+    color: #333;
+    font-size: 14px;
+    font-family: Lato, sans-serif;
+}
+
+#graph-container{
+	top: 45px;
+    bottom: 10px;
+    //left: 260px;
+    left: 0px;
+    right: 0px;
+    position: absolute;
+    //padding-top: 55px;
+   	//margin-top: 55px;
+   	border-color: red;
+}
+
+*:focus {
+    outline: none;
+}
+
+#transbox  {
+	margin: 5%;
+	font-weight: bold;
+	color: #000000;
+}
+			
+body{
+	background: ;
+    color: #333;
+    font-size: 14px;
+    heigth: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#container{
+	//position: fixed;
+}
+
+#outerPannelloSinistro {
+  bottom: 10px;
+  //height: 100%;
+  left: 10px;
+  position: absolute;
+  top: 55px;
+  width: 300px;
+  overflow: hidden;
+}
+
+#pannelloSinistro{
+	 //top: 180px;
+   	bottom: 0px;
+    //left: 10px;
+    //position: fixed;
+    position: absolute;
+    max-height: 100%;
+   	max-width: 100%;
+    background-color: rgb(249, 247, 240);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    overflow-y: auto;
+    direction: rtl;
+    text-align: left;
+    left: 0px;
+}
+
+.paneDiv {
+	box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+	direction: ltr;
+	//margin-bottom: 50px;
+	//display: none; /* da decommentare per effetto doppio tasto */
+}
+
+.buttonPaneDiv{
+	box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+	display: none; /* da commentare per effetto doppio tasto */
+}
+
+#buttonInfoPane{
+	//display: none;
+	//top: 50%;
+    bottom: 10px; 
+    right: 10px;
+    position: fixed;
+    width: 230px;
+    background-color: rgb(249, 247, 237);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+#infoPane{
+	//top: 10px;
+    bottom: 10px;
+    right: 10px;
+    position: absolute;
+   	// width: 230px;
+    //background-color: rgb(249, 247, 237);
+    background: white;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    //display: none;
+}
+/*
+#contentLayoutPane > div, #contentControlPane > div, #contentCommunityPane > div,
+#tablePane > div{
+	margin: 10px;
+	overflow-x: auto;
+}
+*/
+.contentPane{
+	margin-bottom: 25px;
+	display: none;
+}
+
+.contentPane > div{
+	margin: 10px;
+	overflow-x: auto;
+}
+.line {
+	clear: both;
+    display: block;
+    //width: 100%;
+    margin: 0;
+    //padding: 12px 0 0 0;
+    border-bottom: 1px solid #aac789;
+    background: transparent;
+}
+
+h2, h3, h4 {
+	padding: 0;
+    font-variant: small-caps;
+}
+
+.green {
+	color: #437356;
+}
+
+h2.underline {
+	color: #437356;
+    //background: #fadf45;
+    background: gainsboro;
+    margin: 0;
+    border-radius: 2px;
+    padding: 8px 12px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.hidden {
+	display: none;
+	visibility: hidden;
+}
+  
+input[type=range] {
+	width: 200px;
+}
+
+#evidenziaFiltro{
+	visibility: hidden;
+}
+
+.cliccabile{
+	cursor: pointer;
+}
+
+.tooltip {
+	max-width: 305px;
+    max-height: 280px;
+    //background-color: rgb(249, 247, 237);
+    background: white;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    border-radius: 6px;
+}
+
+.tooltipHeader {
+	font-variant: small-caps;
+    font-size: 120%;
+    color: #437356;
+    border-bottom: 1px solid #aac789;
+    padding: 10px;
+    text-align: center;
+    background: gainsboro;
+}
+
+.tooltipBody {
+    padding: 10px;
+}
+
+.tooltipBody th {
+    color: #999;
+    text-align: left;
+}
+
+.tooltipFooter {
+    padding: 10px;
+    border-top: 1px solid #aac789;
+}
+
+.tooltip > .tooltipArrow {
+    border-width: 10px;
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+}
+
+.tooltip.top {
+    margin-top: -12px;
+}
+
+.tooltip.top > .tooltipArrow {
+    left: 50%;
+    bottom: -10px;
+    margin-left: -10px;
+    border-top-color: rgb(249, 247, 237);
+    border-bottom-width: 0;
+}
+
+graph {
+  //margin: 0 auto;
+  position: absolute;
+  //top: 50%;
+  width: 99%;
+  height: 98%;
+  display: none;
+}
+
+#chiudiGrafo{
+	display: none;
+	margin-left: 71%;
+	position: absolute;
+}
+
+#container-lazzo{
+	display: none;
+	
+    bottom: 20px; 
+    right: 20px;
+    position: fixed;
+
+    background-color: rgb(249, 247, 237);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+          
+#control-pane{
+	top: 10px;
+    /*bottom: 10px;*/
+    right: 10px;
+    position: absolute;
+    //width: 230px;
+    background-color: rgb(249, 247, 237);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+
+#buttonControlPane{
+	top: 10px;
+    /*bottom: 10px;*/
+    right: 10px;
+    position: absolute;
+   	//width: 230px;
+    background-color: rgb(249, 247, 237);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+	display: none;
+}
+
+.outer {
+    display: none;
+    position: absolute;
+    height: 99%;
+    width: 99%;
+    margin: 0 auto;
+    bottom: 5px;
+}
+
+.outer:after{
+    content: '';
+    background-color: grey;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.5;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.inner {
+    margin-left: auto;
+    margin-right: auto; 
+    width: 800px;
+    z-index: 100;
+    position: relative;
+}
+
+/**** menu*****/
+#navigationMenu li{
+	list-style:none;
+	height:39px;
+	padding:2px;
+	width:40px;
+}
+
+#navigationMenu span {
+	/* Container properties */
+	width:0;
+	left:38px;
+	padding:0;
+	position:absolute;
+	overflow:hidden;
+
+	/* Text properties */
+	font-family:'Myriad Pro',Arial, Helvetica, sans-serif;
+	font-size:18px;
+	font-weight:bold;
+	letter-spacing:0.6px;
+	white-space:nowrap;
+	line-height:39px;
+	
+	/* CSS3 Transition: */
+	-webkit-transition: 0.25s;
+	
+	/* Future proofing (these do not work yet): */
+	-moz-transition: 0.25s;
+	transition: 0.25s;
+}
+
+#navigationMenu a{
+	background:url('../img/menu3.png') no-repeat;
+	
+	height:39px;
+	width:38px;
+	display:block;
+	position:relative;
+}
+
+/* General hover styles */
+
+#navigationMenu a:hover span{ width:auto; padding:0 20px;overflow:visible; }
+#navigationMenu a:hover{
+	text-decoration: none;
+	
+	/* CSS outer glow with the box-shadow property */
+	//-moz-box-shadow:0 0 5px #9ddff5;
+	//-webkit-box-shadow:0 0 5px #9ddff5;
+	//box-shadow:0 0 5px #9ddff5;
+}
+
+/* Green Button */
+
+#navigationMenu .home {	background-position:0 0;}
+#navigationMenu .home:hover {	background-position:0 -39px;}
+#navigationMenu .home span{/*
+	background-color:#7da315;
+	color:#3d4f0c;
+	text-shadow:1px 1px 0 #99bf31;*/
+}
+
+/* Blue Button */
+
+#navigationMenu .about { background-position:-38px 0;}
+#navigationMenu .about:hover { background-position:-38px -39px;}
+#navigationMenu .about span{
+	/*background-color:#1e8bb4;
+	color:#223a44;
+	text-shadow:1px 1px 0 #44a8d0;*/
+}
+
+
+.linkMenu span {
+	color:#5a3517;
+}
+
+/* Orange Button */
+
+#navigationMenu .services { background-position:-76px 0;}
+#navigationMenu .services:hover { background-position:-76px -39px;}
+#navigationMenu .services span{/*
+	background-color:#c86c1f;
+	color:#5a3517;
+	text-shadow:1px 1px 0 #d28344;*/
+}
+
+/* Yellow Button */
+
+#navigationMenu .portfolio { background-position:-114px 0;}
+#navigationMenu .portfolio:hover{ background-position:-114px -39px;}
+#navigationMenu .portfolio span{/*
+	background-color:#d0a525;
+	color:#604e18;
+	text-shadow:1px 1px 0 #d8b54b;*/
+}
+
+/* Purple Button */
+
+#navigationMenu .contact { background-position:-152px 0;}
+#navigationMenu .contact:hover { background-position:-152px -39px;}
+#navigationMenu .contact span{/*
+	background-color:#af1e83;
+	color:#460f35;
+	text-shadow:1px 1px 0 #d244a6;*/
+}
+
+#main{
+	margin:80px auto;
+	position: absolute;
+	width:40px;
+}
+
+
+h1{
+	color:#fff;
+	font-size:30px;
+	font-weight:normal;
+	padding:60px 0 20px;
+	text-align:center;
+}
+
+h2{
+	font-weight:normal;
+	text-align:center;
+}
+
+h1,h2{
+	font-family:"Myriad Pro",Arial,Helvetica,sans-serif;
+}
+
+a, a:visited,a:active {
+	//color:#0196e3;
+	color: grey;
+	text-decoration:none;
+	outline: none;
+}
+
+a:hover{
+	text-decoration:underline;
+}
+
+a img{
+	border:none;
+}
+
+p.note{
+	color:#707070;
+	font-size:10px;
+	text-align:center;
+	margin:50px;
+}
+
+.pannelloSinistro2 {
+	background-color: white;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    bottom: 10px;
+    left: 10px;
+    position: absolute;
+}
+
+.pannelloSinistro2 span {
+	font-family: "Myriad Pro",Arial,Helvetica,sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    left: 38px;
+    letter-spacing: -0.4px;
+    line-height: 39px;
+    margin: 0 3px;
+    overflow: hidden;
+    padding: 0;
+    //position: absolute;
+    text-align: center;
+    //color: #5a3517;
+}
+
+.tooltipBody span {
+	font-family: "Myriad Pro",Arial,Helvetica,sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    //left: 38px;
+    letter-spacing: 0.6px;
+    line-height: 39px;
+    margin: 0 10px;
+    overflow: hidden;
+    padding: 0;
+    text-align: center;
+}
+
+.pannelloSinistro2 a:hover, .tooltipBody a:hover {
+	text-decoration: none;
+	color: #555555;
+}
+
+.contentPannelloSinistro {
+	display: none;
+}
+
+.pannelloSinContentPane {
+	max-height: 150px;
+	overflow-y: scroll;
+	direction: rtl;
+	text-align: left;
+	padding: 0 5px;
+}
+
+.pannelloSinContentPane * {
+	direction: ltr;
+}
+
+
+#tabella {
+	width: 100%;
+}
+
+#tabella thead th, #tabella tbody td {
+	//width: 9%;
+}
+
+#tabella thead, #tabella tbody {
+	//display: block;
+}
+
+#tabella tbody {
+	height: 700px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	width: 1200px;
+}
+
+#mainNodi, #mainArchi {
+	position: absolute;
+	left: 10px;
+	top: 90px;
+}

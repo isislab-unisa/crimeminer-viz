@@ -1,0 +1,118 @@
+<!-- ******************************************************************************************************************************** -->
+		<!-- Pannello sinistro -->
+		<div id="outerPannelloSinistro" style="display:none">
+			<div id="pannelloSinistro">		
+			
+			<!-- I TASTI PER LA RICOMPARSA NON SONO PIù USATI -->
+			<!-- tasto per la ricomparsa del pannello layout -->
+			<!-- <div id="buttonLayoutPane" onclick="nascondiMostraPannello('layoutPane', 'buttonLayoutPane')" class="cliccabile buttonPaneDiv">
+				<h2 class="underline">layout</h2>
+			</div>
+			-->
+			<!-- pannello layout -->
+			<div id="layoutPane" class="paneDiv">
+				<h2 id="hideLayoutPane" class="underline cliccabile" onclick="nascondiElemento('contentLayoutPane')">graph layout</h2>
+				<div id="contentLayoutPane" class="contentPane">
+					<div>
+						<button id="atlasLayout">Force Atlas</button>
+						<button id="frLayout">Fruchterman-Reingold</button>
+					</div>
+					<span class="line"></span>
+				</div>
+			</div>
+			<!-- fine pannello layout -->
+			
+			<!-- pannello filtri -->
+			<div id="controlPane" class="paneDiv">
+				<h2 id="hideControlPane" class="underline cliccabile" onclick="nascondiElemento('contentControlPane')">filters</h2>
+				<!-- degree -->
+				<div id="contentControlPane" class="contentPane">
+					<div>
+						<h3>min degree <span id="min-degree-val">0</span></h3>
+						0 <input id="min-degree" type="range" min="0" max="0" value="0"> 
+						<span id="max-degree-value">0</span>
+						<br>
+					</div>
+					<!-- fine degree -->
+					<span class="line"></span>
+					<!-- filtri -->
+					<div>
+						<h3>select nodes</h3>
+						<div id="selezioneDiv">
+							<select id="selezioneAttributi" onChange="selectSelection(this.id, 'scegliAttributi')">
+								<option selected="selected" >attributes</option>
+							</select>
+							<span>-></span>
+							<select id="scegliAttributi" onchange="evidenziaSelection()">
+							</select>
+						</div>
+					</div>
+					<!-- fine filtri -->
+					<span class="line"></span>
+					<!-- tasti -->
+					<div>
+						<button id="reset-button">reset filters</button>
+					</div>
+					<span class="line"></span>
+					<!-- fine tasti -->
+				</div>
+			</div>
+			<!-- fine pannello filtri -->
+			
+			<!-- pannello community -->
+			<div id="communityPane" class="paneDiv">
+				<h2 id="hideCommunityPane" class="underline cliccabile" onclick="nascondiElemento('contentCommunityPane')">analisys</h2>
+				<div id="contentCommunityPane" class="contentPane">
+					<div>
+						<button id="totDegree" onclick="colorGraph('totdegree')">Total Degree</button>
+						<button id="inDegree" onclick="colorGraph('indegree')">In Degree</button>
+						<button id="outDegree" onclick="colorGraph('outdegree')">Out Degree</button>
+					</div>
+					<span class="line"></span>
+					<div>
+						<button id="eccentricity" onclick="colorGraph('eccentricity')">Eccentricity</button>
+						<button id="betweenness" onclick="colorGraph('betweenness')">Betweenness</button>
+						<button id="closeness" onclick="colorGraph('closeness')">Closeness</button>
+					</div>
+					<span class="line"></span>
+					<div>
+						<button id="resetCommunity" onclick="resetColor()">Reset</button>
+					</div>
+					<span class="line"></span>
+				</div>
+			</div>
+			<!-- fine pannello community -->
+			
+			<!-- pannello table -->
+			<div id="tablePane" class="paneDiv">
+				<h2 id="hideTablePane" class="underline cliccabile" onclick="nascondiElemento('contentTablePane')">data</h2>
+				<div id="contentTablePane" class="contentPane">
+					<div>
+						<button onclick="apriTabellaNodi()">Nodes Table</button>
+						<button onclick="apriTabellaArchi()">Edges Table</button>
+					</div>
+					<span class="line"></span>
+				</div>
+			</div>
+			<!-- fine pannello table -->
+			
+			<!-- pannello info lazzo -->
+			<div id="lazzoPane" class="paneDiv">
+				<h2 id="hideLazzoPane" class="underline cliccabile" onclick="nascondiElemento('contentLazzoPane')">tools</h2>
+				<div id="contentLazzoPane" class="contentPane">
+					<div>
+						<button onclick="salvaGrafo()">Save Graph Image</button>
+						<h3>
+							Enable lasso: <kbd>space</kbd> + <kbd>s</kbd>
+						</h3>
+					</div>
+					<span class="line"></span>
+				</div>
+			</div>
+			<!-- fine pannella info lazzo -->
+			
+		</div>
+		</div>
+		<!-- fine pannello sinistro -->
+		
+		<!-- ******************************************************************************************************************************************* -->

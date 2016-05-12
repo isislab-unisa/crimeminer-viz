@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<meta charset="ISO-8859-1">
+	<title>Nodes table</title>
+	<link rel="shortcut icon" href="img/icon.png" />
+
+	<script	src="librerie/jquery/jquery-1.11.3.js"></script>
+	<script src="js/CreaTabella.js"></script>
+	<script src="js/SalvaTabella.js"></script>
+	<script src="js/Data.js"></script>
+	<script src="js/Effetti.js" type="text/javascript"></script>
+	<script src="js/Utility.js" type="text/javascript"></script>
+	
+	 <link href="css/style.css" rel="stylesheet" type="text/css"></link>
+	 
+	  <link href="css/tablePage.css" rel="stylesheet" type="text/css"></link>
+	<!-- choose a theme file  -->
+	<link rel="stylesheet" href="css/tablesort.css">
+	<!-- load jQuery and tablesorter scripts -->
+	<script type="text/javascript" src="librerie/tablesorter/js/jquery.tablesorter.js"></script>
+	<!-- tablesorter widgets (optional) -->
+	<script type="text/javascript" src="librerie/tablesorter/js/jquery.tablesorter.widgets.js"></script>
+	<style>
+	#mainNodi {
+	position:fixed;
+	}
+	.pannelloSinistro2{
+	position:fixed;
+	}
+
+	</style>
+</head>
+<body>
+	<!-- <div id="header">
+		<header>
+			<img id="logoimg" src="img/logo-crimeminer-trsp.png"/>
+		</header>
+	</div>
+	-->
+	<div>
+		<!-- <div id="conternitorTable"> -->	
+			<div id="table"></div>
+		<!-- </div> -->
+		<!-- menu sinistro -->
+		<div id="mainNodi">
+			<ul id="navigationMenu">
+			    <li>
+			    	<a class="about linkMenu cliccabile" onclick="nascondiMenu('filtersPaneNodi'); apriChiudiFiltri()">
+			            <span>filters</span>
+			        </a>
+			    </li>
+				<li>
+			    	<a class="portfolio linkMenu cliccabile" onclick="nascondiMenu('tablePane')">
+			            <span>Edges of the selected nodes</span>
+			        </a>
+			    </li>
+			    <li>
+			    	<a class="contact linkMenu cliccabile" onclick="nascondiMenu('toolsPaneNodi')">
+			            <span>tools</span>
+			        </a>
+			    </li>
+			</ul>
+		</div>
+		<!-- menu sinistro -->
+		
+		
+		<div class="pannelloSinistro2">
+			<!-- pannello filtri -->
+			<div id="filtersPaneNodi" class="contentPannelloSinistro">
+				<h2 id="hideControlPaneNodi" class="underline cliccabile" onclick="nascondiMenu('filtersPaneNodi')">filters</h2>
+				<!-- degree -->
+				<div id="contentControlPaneNodi" class="pannelloSinContentPane">
+					<div>
+				
+						<a id="resetFiltri" class="reset cliccabile"><span>Reset Filters</span></a>
+							<span class="line"></span>
+					<table><thead>
+						<tr><th><p>LEGEND<p><th><tr>
+						<thead>
+						<tbody>
+						<tr><td><p><b>*</b></td><td>  ex. Jh* = Jhon , Jhonatahn<p></td></tr>
+						<tr><td><p><b>and/or</b></td><td> ex. a* or b = Alma , b<p></td></tr>
+						<tr><td><p><b>< <= >= ></b> </td><td>ex. <=100 and >=10;<p></td></tr>
+						<tr><td><p><b>! or !=</b></td><td> ex. !a =[b,c,d..];<p></td></tr>
+						<tr><td><p><b>" or =</b></td><td> ex. Jhon= = Jhon<p></td></tr>
+						<tr><td><p><b>-  or  to</b></td><td> ex. 1 to 9 = 1,2,3,4,5,6,7,8,9<p></td></tr>
+						<tr><td><p><b>?</b></td><td> ex. he?l = heal,heel<p>	</td></tr>			
+						 </tbody>
+						 </table>
+						<br/>
+						
+				
+					</div>
+					<!-- fine info filtri -->
+					
+				</div>
+			</div>
+			<!-- fine pannello filtri -->
+				<!-- pannello table -->
+			<div id="tablePane" class="contentPannelloSinistro">
+				<h2 id="hideTablePane" class="underline cliccabile" onclick="nascondiMenu('tablePane')">Edges of the selected nodes</h2>
+				<div id="contentTablePane" class="pannelloSinContentPane">
+						<div id="contentOpzioniTabella">
+							<a class="cliccabile" onclick="esportaTabella('archi_'+date(),'attribute-table')">
+							<span>Export</span>
+						</a>
+							<span class="line"></span>
+							<table id="attribute-table" style="width:100px"></table>
+			
+
+						</div>
+				</div>
+			</div>
+			<!-- fine pannello table -->
+			<!-- pannello tools -->
+			<div id="toolsPaneNodi" class="contentPannelloSinistro">
+				<h2 id="hideToolsPaneNodi" class="underline cliccabile" onclick="nascondiMenu('toolsPaneNodi')">tools</h2>
+				<div id="contentToolsPaneNodi" class="pannelloSinContentPane">
+					<div>
+						<a onclick="esportaTabella('nodi_'+date(),'tabella')" class="cliccabile"><span>Export nodes table</span></a>
+					</div>
+				</div>
+			</div>
+			<!-- fine pannello tools -->
+		</div>
+		
+		
+		
+		
+		
+	</div>
+	<header>
+			<img id="logoimg" src="img/logo-crimeminer-trsp.png"/>
+	</header>
+</body>
+	<script type="text/javascript" src="js/Selezione.js"></script>
+	<script type="text/javascript">
+		$("#info-control-pane").hide();
+        $("#contentControlPane").hide();
+		creaTabellaNodi();
+	</script>
+	<script type="text/javascript">
+		function resize(){
+			// Change the selector if needed
+			var $table = $('table.tablesorter'),
+			    $bodyCells = $table.find('tbody tr:first').children(),
+			    colWidth;
+		
+			// Adjust the width of thead cells when window resizes
+			$(window).resize(function() {
+			    // Get the tbody columns width array
+			    colWidth = $bodyCells.map(function() {
+			        return $(this).width();
+			    }).get();
+			    
+			    // Set the width of thead columns
+			    $table.find('thead tr').children().each(function(i, v) {
+			        $(v).width(colWidth[i]);
+			    });    
+			}).resize(); // Trigger resize handler
+		}
+		window.onload = resize;
+	</script>
+</html>
