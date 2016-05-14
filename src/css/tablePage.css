@@ -2,7 +2,7 @@ table {
 			width: -moz-min-content;
 			position:right;
 			table-layout: auto;
-			witdh:100%;
+			//witdh:100%;
 			
 			
 		}
@@ -41,8 +41,9 @@ table {
 
 		
 		#table {
-			width:1000px;
+			//width:1000px;
 			position: absolute;
+			width: -moz-min-content;
 		}
 		
 		//inizio modifiche per thead della tabella
@@ -87,7 +88,8 @@ table {
 		margin:0;  
 		padding:4em 0 0 9em; 
 		background: #fff;  
-		font-size: 1em; 
+		//font-size: 1em;
+		font-size: 10pt;
 		}  
 		div#header, div#sidebar{  
 		position:absolute;  

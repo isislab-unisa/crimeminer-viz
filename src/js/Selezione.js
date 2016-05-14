@@ -10,7 +10,7 @@ function creaTabellaInfoNode(e){
 	//creo e mostro la tabella con i dati del nodo
     $('#attribute-table').html("<th><h3 style='text-align: right; color: red'>" + e.data.node.label + "</h3></th>");
     for(i in e.data.node.attributes){
-    	$('#attribute-table').append("<tr><th align='right'>" + i +
+    	$('#attribute-table').append("<tr><th align='right'>" + i.replace("_", " ") +
     			":</th><td id=" + i + ">" + 
     			e.data.node.attributes[i] + "</td></tr>");
     }
@@ -62,13 +62,17 @@ function selezionaAttributo(valoreSelezionato, selectId){
 		if(!cercaInLista(lista, valore))
 			lista.push(valore);
 	}
-	lista.sort();
+	lista.sort(sortNumber);
 	for(i in lista){
 		var option = document.createElement('option');
 		option.value = lista[i];
 		option.text = lista[i];
 		el.appendChild(option);
 	}
+}
+//ordinamento numerico
+function sortNumber(a,b) {
+    return a - b;
 }
 
 /**

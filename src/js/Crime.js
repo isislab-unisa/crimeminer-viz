@@ -15,6 +15,7 @@ sigma.parsers.json('json/Crime.json',{
 		legendFontSize: 15,
 		legendTitleFontColor: 'green',
 		
+		maxNodeSize: 5.5,
 		nodeBorderSize: 0.3,
 		nodeBorderColor: 'black',
 		nodeHoverBorderSize: 2,
@@ -41,9 +42,9 @@ sigma.parsers.json('json/Crime.json',{
 	numNodes = nodes.length;
 	edges = s.graph.edges();
 	numEdges = edges.length;
-	alert(numNodes);
+	
 	for(var n=0; n<numNodes; n++){
-		nodes[n].color = '#' + (Math.floor(Math.random() * 16777215).toString(16) + '000000').substr(0, 6);
+		//nodes[n].color = '#' + (Math.floor(Math.random() * 16777215).toString(16) + '000000').substr(0, 6);
 		nodes[n].x = 100 * Math.cos(2 * n * Math.PI / numNodes);
 		nodes[n].y = 100 * Math.sin(2 * n * Math.PI / numNodes);
 		nodes[n].data = {
@@ -52,8 +53,8 @@ sigma.parsers.json('json/Crime.json',{
 			inDegree: s.graph.degree(nodes[n].id, 'in'),
 			outDegree: outDegree = s.graph.degree(nodes[n].id, 'out'),
 			eccentricity: parseInt(nodes[n].attributes.Eccentricity) + 10,	//per la legenda
-			betweenness: parseInt(nodes[n].attributes.Betweenness),
-			closeness: parseInt(nodes[n].attributes.Closeness) + 10,	//per la legenda
+			betweenness: parseInt(nodes[n].attributes["Betweenness Centrality"]),
+			closeness: parseInt(nodes[n].attributes["Closeness Centrality"]) + 10,	//per la legenda
 			
 			//quality: 'invisible',	//per la scomparsa nel design
 			filtered: 'yes',	//yes per i dati filtrati
@@ -71,6 +72,9 @@ sigma.parsers.json('json/Crime.json',{
 	}
 	s.refresh();
 	
+	//***COMMUNITY ***
+	initCommunity();
+
 	//*** FILTRI ***
 	filter = sigma.plugins.filter(s);		//var filter e funzioni nel file Filtri.js
 	updatePane(s.graph, filter);			//aggiorna il pannello filtri

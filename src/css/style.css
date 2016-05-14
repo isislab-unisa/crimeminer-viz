@@ -145,6 +145,8 @@ body{
 .contentPane{
 	margin-bottom: 25px;
 	display: none;
+	max-height: 350px;
+    	overflow-y: scroll;
 }
 
 .contentPane > div{

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="ISO-8859-1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>CrimeMiner</title>
 	<link rel="shortcut icon" href="img/icon.png" />
 	
@@ -107,7 +107,10 @@
 	<script type="text/javascript" src="librerie/linkurious.js-develop/plugins/sigma.plugins.keyboard/sigma.plugins.keyboard.js"></script>
 	<script type="text/javascript" src="librerie/linkurious.js-develop/plugins/sigma.plugins.lasso/sigma.plugins.lasso.js"></script>
 	<script type="text/javascript" src="librerie/linkurious.js-develop/plugins/sigma.renderers.linkurious/settings.js"></script>
-	
+	<!-- COMMUNITY -->
+	<!-- <script type="text/javascript" src="librerie/linkurious.js-develop/plugins/sigma.statistics.louvain/sigma.statistics.louvain.js"></script> -->
+	<script type="text/javascript" src="js/Community.js"></script>
+
 	<!-- STILI -->
 	<link href="css/style.css" rel="stylesheet" type="text/css"></link>
 </head>
@@ -130,7 +133,7 @@
 			    </li>
 			    <li>
 				     <a class="services linkMenu cliccabile" onclick="nascondiMenu('communityPane')">
-			            <span>analisys</span>
+			            <span>analysis</span>
 			         </a>
 			    </li>
 			    <li>
@@ -154,9 +157,13 @@
 				<h2 id="hideLayoutPane" class="underline cliccabile" onclick="nascondiMenu('layoutPane')">graph layout</h2>
 				<div id="contentLayoutPane" class="pannelloSinContentPane">
 					<div>
-						<a id="atlasLayout" class="cliccabile"><span>Force Atlas</span></a>
+						<a id="atlasLayout" class="cliccabile"
+							title="ForceAtlas2 is a force directed layout: it simulates a physical system in order to spatialize a network. Nodes repulse each other like charged particles, while edges attract their nodes, like springs. These forces create a movement that converges to a balanced state. This final configuration is expected to help the interpretation of the data.">
+							<span>Force Atlas</span></a>
 						<span class="line"></span>
-						<a id="frLayout" class="cliccabile"><span>Fruchterman-Reingold</span></a>
+						<a id="frLayout" class="cliccabile" 
+							title="The Fruchterman-Reingold Algorithm is a force-directed layout algorithm. The nodes are represented by steel rings and the edges are springs between them. The attractive force is analogous to the spring force and the repulsive force is analogous to the electrical force. The basic idea is to minimize the energy of the system by moving the nodes and changing the forces between them.">
+							<span>Fruchterman-Reingold</span></a>
 					</div>
 				</div>
 			</div>
@@ -168,7 +175,7 @@
 				<!-- degree -->
 				<div id="contentControlPane" class="pannelloSinContentPane">
 					<div>
-						<h3>min degree <span id="min-degree-val">0</span></h3>
+						<h3 title="the number of links incident upon a node (i.e., the number of ties that a node has)">min degree <span id="min-degree-val">0</span></h3>
 						0 <input id="min-degree" type="range" min="0" max="0" value="0"> 
 						<span id="max-degree-value">0</span>
 						<br>
@@ -200,28 +207,34 @@
 			
 			<!-- pannello community -->
 			<div id="communityPane" class="contentPannelloSinistro">
-				<h2 id="hideCommunityPane" class="underline cliccabile" onclick="nascondiMenu('communityPane')">analisys</h2>
+				<h2 id="hideCommunityPane" class="underline cliccabile" onclick="nascondiMenu('communityPane')">analysis</h2>
 				<div id="contentCommunityPane" class="pannelloSinContentPane">
 					<div>
-						<a id="totDegree" class="cliccabile" onclick="colorGraph('totdegree')">
+						<a id="totDegree" class="cliccabile" onclick="colorGraph('totdegree')"
+							title="the number of links incident upon a node (i.e., the number of ties that a node has)">
 							<span>Total Degree</span>
 						</a>
-						<a id="inDegree"  class="cliccabile" onclick="colorGraph('indegree')">
+						<a id="inDegree"  class="cliccabile" onclick="colorGraph('indegree')"
+							title="the numers of link that arrive in specific node">
 							<span>In Degree</span>
 						</a>
-						<a id="outDegree" class="cliccabile" onclick="colorGraph('outdegree')">
+						<a id="outDegree" class="cliccabile" onclick="colorGraph('outdegree')"
+							title="the numers of link that start in specific node">
 							<span>Out Degree</span>
 						</a>
 					</div>
 					<span class="line"></span>
 					<div>
-						<a id="eccentricity" class="cliccabile" onclick="colorGraph('eccentricity')">
+						<a id="eccentricity" class="cliccabile" onclick="colorGraph('eccentricity')"
+							title="quantifies how far a node is from the node most distant from it in the graph">
 							<span>Eccentricity</span>
 						</a>
-						<a id="betweenness" class="cliccabile" onclick="colorGraph('betweenness')">
+						<a id="betweenness" class="cliccabile" onclick="colorGraph('betweenness')" 
+							title="quantifies the number of times a node acts as a bridge along the shortest path between two other nodes">
 							<span>Betweenness</span>
 						</a>
-						<a id="closeness" class="cliccabile" onclick="colorGraph('closeness')">
+						<a id="closeness" class="cliccabile" onclick="colorGraph('closeness')"
+							title="closeness is based on the inverse of the distance of each node to every other node in the graph">
 							<span>Closeness</span>
 						</a>
 					</div>
